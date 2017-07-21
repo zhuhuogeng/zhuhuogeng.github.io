@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -109,7 +109,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
@@ -286,6 +286,149 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/21/nginx搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fire">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="☯☯">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/21/nginx搭建/" itemprop="url">nginx搭建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T18:46:33+08:00">
+                2017-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/servers/" itemprop="url" rel="index">
+                    <span itemprop="name">servers</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/21/nginx搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/21/nginx搭建/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></div><div class="line"></div><div class="line">sudo yum -y install git</div><div class="line">sudo yum -y install gcc</div><div class="line">sudo yum -y install gcc-c++</div><div class="line">cd /usr/local/src/</div><div class="line">sudo wget https://ftp.pcre.org/pub/pcre/pcre-8.41.tar.gz</div><div class="line">sudo tar -zxvf pcre-8.41.tar.gz</div><div class="line">sudo wget http://zlib.net/zlib-1.2.11.tar.gz</div><div class="line">sudo tar -zxvf zlib-1.2.11.tar.gz</div><div class="line">sudo wget http://nginx.org/download/nginx-1.12.1.tar.gz</div><div class="line">sudo tar -zxvf nginx-1.12.1.tar.gz</div><div class="line">cd nginx-1.12.1</div><div class="line">sudo ./configure --prefix=/usr/local/nginx --with-pcre=/usr/local/src/pcre-8.41 --with-zlib=/usr/local/src/zlib-1.2.11</div><div class="line">sudo make</div><div class="line">sudo make install</div><div class="line">cd ~</div><div class="line">mkdir crontab</div><div class="line">cd crontab</div><div class="line">mkdir logs</div><div class="line">mkdir script</div><div class="line">cd script</div><div class="line">git clone https://github.com/qitaichen/daemon-dog.git</div><div class="line">cd daemon-dog</div><div class="line">echo 'nginx###/usr/local/nginx/sbin/nginx' &gt; dog.config</div><div class="line">chmod +x common_dog.sh</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/01/nohup含义详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -385,20 +528,14 @@
 
       
         
-          
-            <h2 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h2><p>nohup(n ohang up)的意思是不挂起、永久执行<br>nohup运行命令可以使运行的命令永久的执行下去，和用户终端没有关系，可以在你退出帐户/关闭终端之后继续运行相应的进程。例如我们断开SSH连接并不会影响他的运行(注意：nohup没有后台运行的意思，&amp;才是后台运行)</p>
-<h2 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h2><p>&amp;是指在后台运行，当用户退出(挂起)、关闭终端的时候，后台运行的这条命令也会退出</p>
-<h2 id="dev-null"><a href="#dev-null" class="headerlink" title="/dev/null"></a>/dev/null</h2><p>/dev/null表示垃圾桶的意思，类似windows的回收站</p>
-<h2 id="2-gt-amp-1"><a href="#2-gt-amp-1" class="headerlink" title="2&gt;&amp;1"></a>2&gt;&amp;1</h2><p>2表示错误输出，1表示标准输出，&gt;表示重定向<br>所以2&gt;&amp;1连起来就是：将错误输出重定向到标准输出<br>为什么不写成2&gt;1呢？在这里，2与&gt;结合代表错误重定向，而1则代表错误重定向到一个文件1，而不代表标准输出，需要加上&amp;</p>
-<p>为了验证2&gt;&amp;1，可以做如下的测试<br>当前目录没有任何文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ls</div><div class="line">$</div></pre></td></tr></table></figure></p>
-<p>ls 2&gt;1<br>运行ls 2&gt;1，不会报没有2文件的错误，会生成一个空的文件1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ls 2&gt;1</div><div class="line">1</div><div class="line">$ ls</div><div class="line">1</div></pre></td></tr></table></figure></p>
-<p>ls notExist 2&gt;1<br>先删除上一次生成的文件1，运行ls notExist 2&gt;1，没有notExist这个目录的错误输出到了1中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ rm 1</div><div class="line">$ ls notExist 2&gt;1</div><div class="line">$ cat 1</div><div class="line">ls: notExist: No such file or directory</div></pre></td></tr></table></figure></p>
-<p>ls notExist 2&gt;&amp;1<br>先删除上一次生成的文件1，运行ls notExist 2&gt;&amp;1，屏幕直接输出了错误信息，没有生成文件1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ rm 1</div><div class="line">$ notExist 2&gt;&amp;1</div><div class="line">ls: notExist: No such file or directory</div><div class="line">$ ls</div><div class="line">$</div></pre></td></tr></table></figure></p>
-<p>ls notExist &gt;log.txt 2&gt;&amp;1<br>运行ls notExist &gt;log.txt 2&gt;&amp;1, 生成了一个log.txt的文件， 并且错误输出打印到了文件里面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ ls notExist &gt;log.txt 2&gt;&amp;1</div><div class="line">$ ls</div><div class="line">log.txt</div><div class="line">$ cat log.txt</div><div class="line">ls: notExist: No such file or directory</div><div class="line">$</div></pre></td></tr></table></figure></p>
-<h2 id="为什么不写成2-gt-amp-1-dev-null"><a href="#为什么不写成2-gt-amp-1-dev-null" class="headerlink" title="为什么不写成2&gt;&amp;1 /dev/null"></a>为什么不写成2&gt;&amp;1 /dev/null</h2><p>Q: 既然2&gt;&amp;1将错误输重定向到标准输出，/dev/null，那不是应该写成2&gt;&amp;1 /dev/null吗？<br>A: 因为运行2&gt;&amp;1的时候标准输出还是在终端，然后运行/dev/null才把输出扔到垃圾桶，所以如果这样写的话，输出还是会打印在终端</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所以，nohup command /dev/null 2&gt;&amp;1 &amp;的意思就是，将command保持在后台运行，并且将输出的日志忽略</p>
-
-          
+          <h2 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h2><p>nohup(n ohang up)的意思是不挂起、永久执行<br>nohup运行命令可以使运行的命令永久的执行下去，和用户终端没有关系，可以在你退出帐户/关闭终端之后继续运行相应的进程。例如我们断开SSH连接并不会影响他的运行(注意：nohup没有后台运行的意思，&amp;才是后台运行)<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/01/nohup含义详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -607,7 +744,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -618,7 +755,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -629,7 +766,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -686,7 +823,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -774,13 +911,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
 
   
     <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
