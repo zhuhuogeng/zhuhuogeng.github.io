@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="nginx," />
+  <meta name="keywords" content="script," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="1234567891011121314151617181920212223242526#!/bin/shsudo yum -y install gitsudo yum -y install gccsudo yum -y install gcc-c++cd /usr/local/src/sudo wget https://ftp.pcre.org/pub/pcre/pcre-8.41.tar.gzs">
-<meta name="keywords" content="nginx">
+<meta name="description" content="主要用于nginx的日志切割，将日志按天保存">
+<meta name="keywords" content="script">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx搭建">
-<meta property="og:url" content="http://yoursite.com/2017/07/21/nginx搭建/index.html">
+<meta property="og:title" content="nginx日志切割脚本">
+<meta property="og:url" content="http://yoursite.com/2017/07/22/nginx日志切割脚本/index.html">
 <meta property="og:site_name" content="☯☯">
-<meta property="og:description" content="1234567891011121314151617181920212223242526#!/bin/shsudo yum -y install gitsudo yum -y install gccsudo yum -y install gcc-c++cd /usr/local/src/sudo wget https://ftp.pcre.org/pub/pcre/pcre-8.41.tar.gzs">
-<meta property="og:updated_time" content="2017-07-21T10:48:54.000Z">
+<meta property="og:description" content="主要用于nginx的日志切割，将日志按天保存">
+<meta property="og:updated_time" content="2017-07-22T04:18:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx搭建">
-<meta name="twitter:description" content="1234567891011121314151617181920212223242526#!/bin/shsudo yum -y install gitsudo yum -y install gccsudo yum -y install gcc-c++cd /usr/local/src/sudo wget https://ftp.pcre.org/pub/pcre/pcre-8.41.tar.gzs">
+<meta name="twitter:title" content="nginx日志切割脚本">
+<meta name="twitter:description" content="主要用于nginx的日志切割，将日志按天保存">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/21/nginx搭建/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/22/nginx日志切割脚本/"/>
 
 
 
 
 
-  <title>nginx搭建 | ☯☯</title>
+  <title>nginx日志切割脚本 | ☯☯</title>
   
 
 
@@ -286,7 +286,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/21/nginx搭建/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/22/nginx日志切割脚本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fire">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nginx搭建</h1>
+          <h1 class="post-title" itemprop="name headline">nginx日志切割脚本</h1>
         
 
         <div class="post-meta">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T18:46:33+08:00">
-                2017-07-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-22T11:39:07+08:00">
+                2017-07-22
               </time>
             
 
@@ -356,8 +356,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/07/21/nginx搭建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/21/nginx搭建/" itemprop="commentCount"></span>
+                <a href="/2017/07/22/nginx日志切割脚本/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/22/nginx日志切割脚本/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -382,7 +382,10 @@
       
 
       
-        <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></div><div class="line"></div><div class="line">sudo yum -y install git</div><div class="line">sudo yum -y install gcc</div><div class="line">sudo yum -y install gcc-c++</div><div class="line">cd /usr/local/src/</div><div class="line">sudo wget https://ftp.pcre.org/pub/pcre/pcre-8.41.tar.gz</div><div class="line">sudo tar -zxvf pcre-8.41.tar.gz</div><div class="line">sudo wget http://zlib.net/zlib-1.2.11.tar.gz</div><div class="line">sudo tar -zxvf zlib-1.2.11.tar.gz</div><div class="line">sudo wget http://nginx.org/download/nginx-1.12.1.tar.gz</div><div class="line">sudo tar -zxvf nginx-1.12.1.tar.gz</div><div class="line">cd nginx-1.12.1</div><div class="line">sudo ./configure --prefix=/usr/local/nginx --with-pcre=/usr/local/src/pcre-8.41 --with-zlib=/usr/local/src/zlib-1.2.11</div><div class="line">sudo make</div><div class="line">sudo make install</div><div class="line">cd ~</div><div class="line">mkdir crontab</div><div class="line">cd crontab</div><div class="line">mkdir logs</div><div class="line">mkdir script</div><div class="line">cd script</div><div class="line">git clone https://github.com/qitaichen/daemon-dog.git</div><div class="line">cd daemon-dog</div><div class="line">echo 'nginx###/usr/local/nginx/sbin/nginx' &gt; dog.config</div><div class="line">chmod +x common_dog.sh</div></pre></td></tr></table></figure>
+        <p>主要用于nginx的日志切割，将日志按天保存<br><a id="more"></a></p>
+<p>脚本：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>!/bin/bash</div><div class="line"><span class="meta"></span></div><div class="line">################################################################################</div><div class="line"><span class="meta">#</span>#                                                                            ##</div><div class="line"><span class="meta">#</span>#  nginx日志切割脚本                                                          ##</div><div class="line"><span class="meta">#</span>#                                                                            ##</div><div class="line"><span class="meta">#</span>###############################################################################</div><div class="line"><span class="meta"></span></div><div class="line">#设置日志文件存放目录</div><div class="line">logs_path="/usr/local/nginx/logs/"</div><div class="line"><span class="meta">#</span>设置pid文件</div><div class="line">pid_path="/usr/local/nginx/logs/nginx.pid"</div><div class="line"><span class="meta"></span></div><div class="line">#重命名日志文件</div><div class="line">mv $&#123;logs_path&#125;access.log $&#123;logs_path&#125;access_$(date -d "yesterday" +"%Y%m%d").log</div><div class="line"><span class="meta"></span></div><div class="line">#向nginx主进程发信号重新打开日志</div><div class="line">kill -USR1 `cat $&#123;pid_path&#125;`</div></pre></td></tr></table></figure></p>
+<p>添加crontab每天0点运行日志切割脚本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">crontab -e</div><div class="line">0 0 * * * sh /scriptDir/nginx_split.sh &gt;&gt; /scriptDir/logs/nginx_split.log 2&gt;&amp;1</div></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -411,7 +414,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/nginx/" rel="tag"># nginx</a>
+            <a href="/tags/script/" rel="tag"># script</a>
           
         </div>
       
@@ -423,6 +426,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/22/linux进程守护脚本/" rel="next" title="linux进程守护脚本">
+                <i class="fa fa-chevron-left"></i> linux进程守护脚本
+              </a>
             
           </div>
 
@@ -458,8 +465,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/07/21/nginx搭建/"
-           data-title="nginx搭建" data-url="http://yoursite.com/2017/07/21/nginx搭建/">
+      <div class="ds-thread" data-thread-key="2017/07/22/nginx日志切割脚本/"
+           data-title="nginx日志切割脚本" data-url="http://yoursite.com/2017/07/22/nginx日志切割脚本/">
       </div>
     
   </div>
@@ -500,7 +507,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -522,7 +529,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
