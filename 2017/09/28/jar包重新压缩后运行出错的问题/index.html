@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="script," />
+  <meta name="keywords" content="bootRepackage," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="主要用于nginx的日志切割，将日志按天保存">
-<meta name="keywords" content="script">
+<meta name="description" content="在部署应用的时候，由于线上与测试环境的配置不同(例如数据库的url)，有时候我们需要在对应的环境把jar(或war)包里面的配置文件替换掉。针对这种问题，以前一直采用的方案是先jar xf xxx.jar解压这个jar包，替换文件后，使用jar cfM xxx.jar *来重新压缩。由于以前打包的时候是使用的shadowJar插件，用这个方法替换一直没出问题。最近打包插件替换成了springBoo">
+<meta name="keywords" content="bootRepackage">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx日志切割脚本">
-<meta property="og:url" content="http://yoursite.com/2017/07/22/nginx日志切割脚本/index.html">
+<meta property="og:title" content="jar包重新压缩后运行出错的问题">
+<meta property="og:url" content="http://yoursite.com/2017/09/28/jar包重新压缩后运行出错的问题/index.html">
 <meta property="og:site_name" content="☯☯">
-<meta property="og:description" content="主要用于nginx的日志切割，将日志按天保存">
-<meta property="og:updated_time" content="2017-07-22T04:18:52.000Z">
+<meta property="og:description" content="在部署应用的时候，由于线上与测试环境的配置不同(例如数据库的url)，有时候我们需要在对应的环境把jar(或war)包里面的配置文件替换掉。针对这种问题，以前一直采用的方案是先jar xf xxx.jar解压这个jar包，替换文件后，使用jar cfM xxx.jar *来重新压缩。由于以前打包的时候是使用的shadowJar插件，用这个方法替换一直没出问题。最近打包插件替换成了springBoo">
+<meta property="og:updated_time" content="2017-09-28T06:44:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx日志切割脚本">
-<meta name="twitter:description" content="主要用于nginx的日志切割，将日志按天保存">
+<meta name="twitter:title" content="jar包重新压缩后运行出错的问题">
+<meta name="twitter:description" content="在部署应用的时候，由于线上与测试环境的配置不同(例如数据库的url)，有时候我们需要在对应的环境把jar(或war)包里面的配置文件替换掉。针对这种问题，以前一直采用的方案是先jar xf xxx.jar解压这个jar包，替换文件后，使用jar cfM xxx.jar *来重新压缩。由于以前打包的时候是使用的shadowJar插件，用这个方法替换一直没出问题。最近打包插件替换成了springBoo">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/22/nginx日志切割脚本/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/28/jar包重新压缩后运行出错的问题/"/>
 
 
 
 
 
-  <title>nginx日志切割脚本 | ☯☯</title>
+  <title>jar包重新压缩后运行出错的问题 | ☯☯</title>
   
 
 
@@ -286,7 +286,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/22/nginx日志切割脚本/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/28/jar包重新压缩后运行出错的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fire">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nginx日志切割脚本</h1>
+          <h1 class="post-title" itemprop="name headline">jar包重新压缩后运行出错的问题</h1>
         
 
         <div class="post-meta">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-22T11:39:07+08:00">
-                2017-07-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-28T11:48:26+08:00">
+                2017-09-28
               </time>
             
 
@@ -338,8 +338,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/servers/" itemprop="url" rel="index">
-                    <span itemprop="name">servers</span>
+                  <a href="/categories/note/" itemprop="url" rel="index">
+                    <span itemprop="name">note</span>
                   </a>
                 </span>
 
@@ -372,9 +372,26 @@
       
 
       
-        <p>主要用于nginx的日志切割，将日志按天保存<br><a id="more"></a></p>
-<p>脚本：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"><span class="comment">###############################################################################</span></span></div><div class="line"><span class="meta">#</span><span class="bash"><span class="comment">#                                                                            ##</span></span></div><div class="line"><span class="meta">#</span><span class="bash"><span class="comment">#  nginx日志切割脚本                                                          ##</span></span></div><div class="line"><span class="meta">#</span><span class="bash"><span class="comment">#                                                                            ##</span></span></div><div class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################################</span></span></div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">设置日志文件存放目录</span></div><div class="line">logs_path="/usr/local/nginx/logs/"</div><div class="line"><span class="meta">#</span><span class="bash">设置pid文件</span></div><div class="line">pid_path="/usr/local/nginx/logs/nginx.pid"</div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">重命名日志文件</span></div><div class="line">mv $&#123;logs_path&#125;access.log $&#123;logs_path&#125;access_$(date -d "yesterday" +"%Y%m%d").log</div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">向nginx主进程发信号重新打开日志</span></div><div class="line">kill -USR1 `cat $&#123;pid_path&#125;`</div></pre></td></tr></table></figure></p>
-<p>添加crontab每天0点运行日志切割脚本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">crontab -e</div><div class="line">0 0 * * * sh /scriptDir/nginx_split.sh &gt;&gt; /scriptDir/logs/nginx_split.log 2&gt;&amp;1</div></pre></td></tr></table></figure></p>
+        <p>在部署应用的时候，由于线上与测试环境的配置不同(例如数据库的url)，有时候我们需要在对应的环境把jar(或war)包里面的配置文件替换掉。<br>针对这种问题，以前一直采用的方案是先<code>jar xf xxx.jar</code>解压这个jar包，替换文件后，使用<code>jar cfM xxx.jar *</code>来重新压缩。<br>由于以前打包的时候是使用的shadowJar插件，用这个方法替换一直没出问题。最近打包插件替换成了springBoot的，使用这个方式替换会导致新的jar包运行出错的问题。于是使用了<code>jar uf xx xxx.jar</code>的方式来替换，在此对旧的替换方法出的问题做一个总结并且记录一下新的替换方式的使用方法。<br><a id="more"></a></p>
+<h2 id="问题1：运行时提示依赖的jar文件被压缩"><a href="#问题1：运行时提示依赖的jar文件被压缩" class="headerlink" title="问题1：运行时提示依赖的jar文件被压缩"></a>问题1：运行时提示依赖的jar文件被压缩</h2><p>错误信息: </p>
+<pre><code class="shell">Exception in thread &quot;main&quot; java.lang.IllegalStateException: Unable to open nested entry &#39;BOOT-INF/lib/xxxxx.jar&#39;.
+It has been compressed and nested jar files must be stored without compression. Please check the mechanism used to create your executable jar file
+</code></pre>
+<p>错误重现：</p>
+<blockquote>
+<p>我们这个项目的运行方式是将项目用gradle的bootRepackage插件打成jar包，然后执行<code>java -jar xxx.jar</code>来执行的。<br>由于线上与测试环境的配置不同(例如数据库的url)，所以jar包下载到线上服务器后会执行<code>jar xf xxx.jar</code>解压这个jar包，然后使用<code>jar cfM xxx.jar *</code>来重新压缩。压缩后使用<code>java -jar xxx.jar</code>执行就会出现jar文件被压缩的错误。<br>解决方案：<br>在压缩的时候添加-0这个参数。<code>jar cf0M xxx.jar *</code>压缩后可正常执行。</p>
+</blockquote>
+<hr>
+<h2 id="问题2：运行时部分代码卡住，不报错也不往下执行"><a href="#问题2：运行时部分代码卡住，不报错也不往下执行" class="headerlink" title="问题2：运行时部分代码卡住，不报错也不往下执行"></a>问题2：运行时部分代码卡住，不报错也不往下执行</h2><p>错误信息: </p>
+<blockquote>
+<p>无。程序直接卡住，没有任何报错。</p>
+</blockquote>
+<h2 id="新的替换方式"><a href="#新的替换方式" class="headerlink" title="新的替换方式"></a>新的替换方式</h2><p>新的替换方式采用<code>jar uf xx xxx.jar</code>来更新jar包里面的文件，步骤如下：</p>
+<ol>
+<li><code>jar tf xxx.jar</code>查看需要替换的文件的全路径</li>
+<li>在jar包所在目录按层级建立相对应的文件，例如BOOT-INFO/classes/database.properties</li>
+<li>执行<code>jar uf xx xxx.jar</code>，例如<code>jar uf BOOT-INFO xxx.jar</code><br>如果不确定执行结果可以加上参数v查看执行过程或者在执行完后使用<code>jar xf xxx.jar</code>解压后检查</li>
+</ol>
 
       
     </div>
@@ -404,7 +421,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/script/" rel="tag"># script</a>
+            <a href="/tags/bootRepackage/" rel="tag"># bootRepackage</a>
           
         </div>
       
@@ -417,18 +434,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/22/linux进程守护脚本/" rel="next" title="linux进程守护脚本">
-                <i class="fa fa-chevron-left"></i> linux进程守护脚本
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/01/nohup含义详解/" rel="prev" title="nohup /dev/null 2>&1 &含义详解">
-                nohup /dev/null 2>&1 &含义详解 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/27/hexo常用命令笔记/" rel="prev" title="hexo常用命令笔记">
+                hexo常用命令笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -479,8 +492,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -542,6 +564,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题1：运行时提示依赖的jar文件被压缩"><span class="nav-number">1.</span> <span class="nav-text">问题1：运行时提示依赖的jar文件被压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题2：运行时部分代码卡住，不报错也不往下执行"><span class="nav-number">2.</span> <span class="nav-text">问题2：运行时部分代码卡住，不报错也不往下执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新的替换方式"><span class="nav-number">3.</span> <span class="nav-text">新的替换方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
