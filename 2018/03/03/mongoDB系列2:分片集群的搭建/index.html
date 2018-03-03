@@ -93,15 +93,17 @@
 
 
 
-<meta name="description" content="这个人很懒，什么也没有留下">
-<meta property="og:type" content="website">
-<meta property="og:title" content="☯☯">
-<meta property="og:url" content="http://yoursite.com/categories/linux/index.html">
+<meta name="description" content="通过《mongoDB系列1:三种集群模式介绍》我们了解了mongoDB的分片集群，本文将带大家搭建一个mongoDB的分片集群。">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongoDB系列2:分片集群的搭建">
+<meta property="og:url" content="http://yoursite.com/2018/03/03/mongoDB系列2:分片集群的搭建/index.html">
 <meta property="og:site_name" content="☯☯">
-<meta property="og:description" content="这个人很懒，什么也没有留下">
+<meta property="og:description" content="通过《mongoDB系列1:三种集群模式介绍》我们了解了mongoDB的分片集群，本文将带大家搭建一个mongoDB的分片集群。">
+<meta property="og:updated_time" content="2018-03-03T10:55:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="☯☯">
-<meta name="twitter:description" content="这个人很懒，什么也没有留下">
+<meta name="twitter:title" content="mongoDB系列2:分片集群的搭建">
+<meta name="twitter:description" content="通过《mongoDB系列1:三种集群模式介绍》我们了解了mongoDB的分片集群，本文将带大家搭建一个mongoDB的分片集群。">
 
 
 
@@ -129,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/linux/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/03/mongoDB系列2:分片集群的搭建/"/>
 
 
 
 
 
-  <title>分类: linux | ☯☯</title>
+  <title>mongoDB系列2:分片集群的搭建 | ☯☯</title>
   
 
 
@@ -170,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -274,45 +276,164 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>linux<small>分类</small>
-      </h1>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/01/nohup含义详解/" itemprop="url">
-              
-                <span itemprop="name">nohup /dev/null 2>&1 &含义详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-01T11:05:11+08:00"
-              content="2017-07-01" >
-          07-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/03/mongoDB系列2:分片集群的搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fire">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="☯☯">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mongoDB系列2:分片集群的搭建</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T18:48:03+08:00">
+                2018-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mongoDB/" itemprop="url" rel="index">
+                    <span itemprop="name">mongoDB</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>通过<strong><a href="/2018/03/03/mongoDB系列1:三种集群模式介绍/" title="《mongoDB系列1:三种集群模式介绍》">《mongoDB系列1:三种集群模式介绍》</a></strong>我们了解了mongoDB的分片集群，本文将带大家搭建一个mongoDB的分片集群。<br><a id="more"></a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/03/mongoDB系列1:三种集群模式介绍/" rel="prev" title="mongoDB系列1:三种集群模式介绍">
+                mongoDB系列1:三种集群模式介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -320,6 +441,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTY2NS82MjMz"></div>
+    
+  </div>
+
 
         </div>
         
@@ -512,10 +639,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
@@ -544,6 +671,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

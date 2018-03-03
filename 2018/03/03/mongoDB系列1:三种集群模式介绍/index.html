@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -93,17 +93,21 @@
 
 
 
-<meta name="description" content="hexo n(new) fileName  # 新建文章hexo g(generate)      # 生成网页hexo s(server)        # 启动服务器hexo d(deploy)        # 部署到线上hexo p(publish)       #">
-<meta name="keywords" content="hexo">
+<meta name="description" content="mongoDB是一个开源的文档类型数据库，它具有高性能，高可用，可自动收缩的特性。mongoDB集群模式主要有主从(master/slaves)，副本集(replication)，和分片(sharding)。">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo常用命令笔记">
-<meta property="og:url" content="http://yoursite.com/2017/09/27/hexo常用命令笔记/index.html">
+<meta property="og:title" content="mongoDB系列1:三种集群模式介绍">
+<meta property="og:url" content="http://yoursite.com/2018/03/03/mongoDB系列1:三种集群模式介绍/index.html">
 <meta property="og:site_name" content="☯☯">
-<meta property="og:description" content="hexo n(new) fileName  # 新建文章hexo g(generate)      # 生成网页hexo s(server)        # 启动服务器hexo d(deploy)        # 部署到线上hexo p(publish)       #">
-<meta property="og:updated_time" content="2017-09-27T15:04:07.000Z">
+<meta property="og:description" content="mongoDB是一个开源的文档类型数据库，它具有高性能，高可用，可自动收缩的特性。mongoDB集群模式主要有主从(master/slaves)，副本集(replication)，和分片(sharding)。">
+<meta property="og:image" content="http://yoursite.com/images/mongoDBmasterSlave.png">
+<meta property="og:image" content="http://yoursite.com/images/mongDBreplication.png">
+<meta property="og:image" content="http://yoursite.com/images/mongoDBsharding.png">
+<meta property="og:updated_time" content="2018-03-03T10:49:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo常用命令笔记">
-<meta name="twitter:description" content="hexo n(new) fileName  # 新建文章hexo g(generate)      # 生成网页hexo s(server)        # 启动服务器hexo d(deploy)        # 部署到线上hexo p(publish)       #">
+<meta name="twitter:title" content="mongoDB系列1:三种集群模式介绍">
+<meta name="twitter:description" content="mongoDB是一个开源的文档类型数据库，它具有高性能，高可用，可自动收缩的特性。mongoDB集群模式主要有主从(master/slaves)，副本集(replication)，和分片(sharding)。">
+<meta name="twitter:image" content="http://yoursite.com/images/mongoDBmasterSlave.png">
 
 
 
@@ -131,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/27/hexo常用命令笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/03/mongoDB系列1:三种集群模式介绍/"/>
 
 
 
 
 
-  <title>hexo常用命令笔记 | ☯☯</title>
+  <title>mongoDB系列1:三种集群模式介绍 | ☯☯</title>
   
 
 
@@ -286,7 +290,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/27/hexo常用命令笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/03/mongoDB系列1:三种集群模式介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fire">
@@ -303,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo常用命令笔记</h1>
+          <h1 class="post-title" itemprop="name headline">mongoDB系列1:三种集群模式介绍</h1>
         
 
         <div class="post-meta">
@@ -315,8 +319,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-27T19:35:24+08:00">
-                2017-09-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T16:27:54+08:00">
+                2018-03-03
               </time>
             
 
@@ -338,8 +342,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/" itemprop="url" rel="index">
-                    <span itemprop="name">note</span>
+                  <a href="/categories/mongoDB/" itemprop="url" rel="index">
+                    <span itemprop="name">mongoDB</span>
                   </a>
                 </span>
 
@@ -372,8 +376,20 @@
       
 
       
-        <blockquote>
-<p>hexo n(new) fileName  # 新建文章<br>hexo g(generate)      # 生成网页<br>hexo s(server)        # 启动服务器<br>hexo d(deploy)        # 部署到线上<br>hexo p(publish)       # </p>
+        <p>mongoDB是一个开源的文档类型数据库，它具有高性能，高可用，可自动收缩的特性。<br>mongoDB集群模式主要有主从(master/slaves)，副本集(replication)，和分片(sharding)。<br><a id="more"></a></p>
+<h2 id="主从-master-slaves"><a href="#主从-master-slaves" class="headerlink" title="主从(master/slaves)"></a>主从(master/slaves)</h2><p><img src="/images/mongoDBmasterSlave.png" alt="mongoDB主从模式架构图"><br>主从是所有集群模式中最简单的，如上图所示，由一主一从或一主多从组成。<br>主从模式是早期系统设计中最常见的，实现数据备份的同时，将读写分离，降低数据库的压力。<br>该模式由两个角色组成：</p>
+<blockquote>
+<p>master: 提供读写功能<br>slave: 提供数据备份和读功能</p>
+</blockquote>
+<p>主从模式下，master节点出现故障的时候，需要手动恢复，已不再推荐使用，</p>
+<h2 id="副本集-replication"><a href="#副本集-replication" class="headerlink" title="副本集(replication)"></a>副本集(replication)</h2><p><img src="/images/mongDBreplication.png" alt="mongoDB副本集模式架构图"><br>如上图所示，副本集由一组mongo实例组成，提供了数据冗余与高可用性。相对于主从模式，该模式可以在主节点挂掉的时候通过选举算法自动选举出新的主节点，保证服务的可用性。<br>该模式由三个角色组成：</p>
+<blockquote>
+<p>primary: 主节点，对应的master/slave模式的master。主节点是唯一能够接收写请求的节点。一旦主节点不可用，会选出新的主节点。<br>secondaries: 从节点，对应的master/slave模式的slave。提供数据备份和读功能，并且能在主节点挂掉的时候被选举为新的主节点。<br>arbiter: 投票节点或者叫仲裁节点。该角色是可选的，所以图上也没有画出来。投票节点其本身并不包含数据集，也无法被升级为主节点，但是，一旦当前的主节点不可用时，投票节点就会参与到新的主节点选举的投票中。投票节点仅在复制集成员为偶数个的时候需要，如果在拥有奇数个复制集成员的复制集中新增了一个投票节点，复制集可能会遇到选举僵局，具体可以看<a href="https://docs.mongodb.com/manual/core/replica-set-arbiter/" target="_blank" rel="external">官方文档</a></p>
+</blockquote>
+<p>该模式的缺点是每个节点都要存储一份完整的数据，当存储数据量越来越大的时候，只能通过扩大每一个节点的容量来实现扩容。</p>
+<h2 id="分片-sharding"><a href="#分片-sharding" class="headerlink" title="分片(sharding)"></a>分片(sharding)</h2><p><img src="/images/mongoDBsharding.png" alt="mongoDB分片模式架构图"><br>在副本集模式下，当数据量越来越大时，我们只能通过把节点的容量(升级服务器的硬件)不断的扩大来实现扩容，这种垂直扩容的方式容易达到极限，并且成本高，于是有了分片模式。<br>分片模式下，可以将数据拆分成多个数据块，存储在不同的节点上。当数据量越来越大的时候，可以通过添加分片来实现扩容。<br>如图所示，该模式有N个路由节点，N个配置节点，和N个数据节点，每个角色的作用如下：</p>
+<blockquote>
+<p>ruoter: 路由节点。客户端的请求发到router，由router向config查询数据的元信息，然后将查询与写入请求分发到shard。<br>config: 配置节点。该节点的作用是记录对数据分片的规则，存储所有数据库元信息(路由、分片)的配置。<br>shard: 数据节点，真正存储数据的地方。</p>
 </blockquote>
 
       
@@ -402,12 +418,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
-          
-        </div>
-      
 
       
       
@@ -417,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/28/jar包重新压缩后运行出错的问题/" rel="next" title="jar包重新压缩后运行出错的问题">
-                <i class="fa fa-chevron-left"></i> jar包重新压缩后运行出错的问题
+              <a href="/2018/03/03/mongoDB系列2:分片集群的搭建/" rel="next" title="mongoDB系列2:分片集群的搭建">
+                <i class="fa fa-chevron-left"></i> mongoDB系列2:分片集群的搭建
               </a>
             
           </div>
@@ -427,8 +437,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/22/nginx搭建/" rel="prev" title="nginx搭建">
-                nginx搭建 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/28/jar包重新压缩后运行出错的问题/" rel="prev" title="jar包重新压缩后运行出错的问题">
+                jar包重新压缩后运行出错的问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -479,8 +489,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -542,6 +561,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主从-master-slaves"><span class="nav-number">1.</span> <span class="nav-text">主从(master/slaves)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#副本集-replication"><span class="nav-number">2.</span> <span class="nav-text">副本集(replication)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分片-sharding"><span class="nav-number">3.</span> <span class="nav-text">分片(sharding)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
