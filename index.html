@@ -701,7 +701,7 @@
   
 
   <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/27/hexo常用命令笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/27/node,npm,hexo升级及常用命令/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fire">
@@ -720,7 +720,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/27/hexo常用命令笔记/" itemprop="url">hexo常用命令笔记</a></h1>
+                <a class="post-title-link" href="/2017/09/27/node,npm,hexo升级及常用命令/" itemprop="url">node,npm,hexo升级及常用命令</a></h1>
         
 
         <div class="post-meta">
@@ -791,9 +791,17 @@
       
         
           
-            <blockquote>
-<p>hexo n(new) fileName  # 新建文章<br>hexo g(generate)      # 生成网页<br>hexo s(server)        # 启动服务器<br>hexo d(deploy)        # 部署到线上<br>hexo p(publish)       # </p>
-</blockquote>
+            <a id="more"></a>
+<h2 id="更新node和npm"><a href="#更新node和npm" class="headerlink" title="更新node和npm"></a>更新node和npm</h2><h4 id="查看node-js版本"><a href="#查看node-js版本" class="headerlink" title="查看node.js版本"></a>查看node.js版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<h4 id="清除node的cache"><a href="#清除node的cache" class="headerlink" title="清除node的cache"></a>清除node的cache</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm cache clean -f</span><br></pre></td></tr></table></figure>
+<h4 id="安装node版本管理工具-n"><a href="#安装node版本管理工具-n" class="headerlink" title="安装node版本管理工具 n"></a>安装node版本管理工具 n</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g n</span><br></pre></td></tr></table></figure>
+<h4 id="安装最新稳定版本的node"><a href="#安装最新稳定版本的node" class="headerlink" title="安装最新稳定版本的node"></a>安装最新稳定版本的node</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n stable</span><br><span class="line">// 安装最新版本使用 n latest</span><br><span class="line">// 安装指定版本的使用 n &#123;version&#125;，例如 n 11.2.0</span><br><span class="line">// 删除指定版本的node使用 n rm &#123;version&#125;，例如 n rm 11.2.0</span><br></pre></td></tr></table></figure>
+<h4 id="更新npm版本"><a href="#更新npm版本" class="headerlink" title="更新npm版本"></a>更新npm版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install npm@latest -g</span><br></pre></td></tr></table></figure>
+<h2 id="更新hexo"><a href="#更新hexo" class="headerlink" title="更新hexo"></a>更新hexo</h2><h4 id="查看需要更新的模块"><a href="#查看需要更新的模块" class="headerlink" title="查看需要更新的模块"></a>查看需要更新的模块</h4><p>进入blog目录，然后执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm outdated</span><br></pre></td></tr></table></figure></p>
+<h4 id="更新配置文件"><a href="#更新配置文件" class="headerlink" title="更新配置文件"></a>更新配置文件</h4><p>更新package.json配置文件里面各个模块的版本号</p>
+<h4 id="更新模块"><a href="#更新模块" class="headerlink" title="更新模块"></a>更新模块</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save</span><br></pre></td></tr></table></figure>
+<h4 id="确认升级结果"><a href="#确认升级结果" class="headerlink" title="确认升级结果"></a>确认升级结果</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+<h3 id="hexo常用命令"><a href="#hexo常用命令" class="headerlink" title="hexo常用命令"></a>hexo常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo n(new) fileName  <span class="comment"># 新建文章  </span></span><br><span class="line">hexo g(generate)      <span class="comment"># 生成网页  </span></span><br><span class="line">hexo s(server)        <span class="comment"># 启动服务器  </span></span><br><span class="line">hexo d(deploy)        <span class="comment"># 部署到线上  </span></span><br><span class="line">hexo p(publish)       <span class="comment">#</span></span><br></pre></td></tr></table></figure>
 
           
         
