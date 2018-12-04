@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/03/08/mongoDB系列2:分片集群的搭建/index.html">
 <meta property="og:site_name" content="☯☯">
 <meta property="og:description" content="通过《mongoDB系列1:三种集群模式介绍》我们了解了mongoDB的分片集群，本文将带大家搭建一个mongoDB的分片集群。">
-<meta property="og:updated_time" content="2018-03-08T12:29:56.000Z">
+<meta property="og:updated_time" content="2018-12-04T08:30:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongoDB系列2:分片集群的搭建">
 <meta name="twitter:description" content="通过《mongoDB系列1:三种集群模式介绍》我们了解了mongoDB的分片集群，本文将带大家搭建一个mongoDB的分片集群。">
@@ -373,6 +373,26 @@
 
       
         <p>通过<strong><a href="/2018/03/08/mongoDB系列1:三种集群模式介绍/" title="《mongoDB系列1:三种集群模式介绍》">《mongoDB系列1:三种集群模式介绍》</a></strong>我们了解了mongoDB的分片集群，本文将带大家搭建一个mongoDB的分片集群。<br><a id="more"></a></p>
+<p>[toc]</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/src/</div><div class="line">wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-amazon-3.6.6.tgz</div><div class="line">tar zxvf mongodb-linux-x86_64-amazon-3.6.6.tgz</div><div class="line">mv mongodb-linux-x86_64-amazon-3.6.6 ../</div><div class="line">cd ~</div><div class="line">ln -s /usr/local/mongodb-linux-x86_64-amazon-3.6.6/ mongo</div></pre></td></tr></table></figure>
+<h2 id="搭建config集群"><a href="#搭建config集群" class="headerlink" title="搭建config集群"></a>搭建config集群</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">mkdir -p /data/mongodb/config/</div><div class="line">cat &gt; /data/mongodb/config.conf &lt;&lt;EOF</div><div class="line">sharding:</div><div class="line">  clusterRole: configsvr</div><div class="line"></div><div class="line">replication:</div><div class="line">  replSetName: configServer</div><div class="line">  oplogSizeMB: 2048</div><div class="line"></div><div class="line">net:</div><div class="line">  port: 27018</div><div class="line">  bindIpAll: true</div><div class="line"></div><div class="line">systemLog:</div><div class="line">  destination: file</div><div class="line">  logRotate: reopen</div><div class="line">  path: /data/mongodb/config.log</div><div class="line">  logAppend: true</div><div class="line"></div><div class="line">storage:</div><div class="line">  dbPath: /data/mongodb/config/</div><div class="line">  journal:</div><div class="line">    enabled: false</div><div class="line">  directoryPerDB: true</div><div class="line"></div><div class="line">processManagement:</div><div class="line">  fork: true</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~/mongo/bin/</div><div class="line">./mongod --config /data/mongodb/config.conf</div><div class="line">./mongo localhost:27018/admin</div><div class="line">rs.initiate(&#123;_id:&quot;configServer&quot;,configsvr:true,members:[&#123;_id:0,host:&quot;172.32.220.135:27018&quot;&#125;,&#123;_id:1,host:&quot;172.32.210.111:27018&quot;&#125;,&#123;_id:2,host:&quot;172.32.210.133:27018&quot;&#125;]&#125;)</div></pre></td></tr></table></figure>
+<h2 id="搭建shard集群"><a href="#搭建shard集群" class="headerlink" title="搭建shard集群"></a>搭建shard集群</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">mkdir -p /data/mongodb/shard1</div><div class="line">cat &gt; /data/mongodb/shard1.conf &lt;&lt;EOF</div><div class="line">sharding:</div><div class="line">  clusterRole: shardsvr</div><div class="line"></div><div class="line">replication:</div><div class="line">  replSetName: shard1</div><div class="line">  oplogSizeMB: 2048</div><div class="line"></div><div class="line">net:</div><div class="line">  port: 27017</div><div class="line">  bindIpAll: true</div><div class="line"></div><div class="line">systemLog:</div><div class="line">  destination: file</div><div class="line">  logRotate: reopen</div><div class="line">  path: /data/mongodb/shard1.log</div><div class="line">  logAppend: true</div><div class="line"></div><div class="line">storage:</div><div class="line">  dbPath: /data/mongodb/shard1/</div><div class="line">  journal:</div><div class="line">    enabled: false</div><div class="line">  directoryPerDB: true</div><div class="line"></div><div class="line">processManagement:</div><div class="line">  fork: true</div><div class="line"></div><div class="line">setParameter:</div><div class="line">  wiredTigerConcurrentWriteTransactions: 512</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~/mongo/bin/</div><div class="line">./mongod --config /data/mongodb/shard1.conf</div><div class="line">./mongo localhost:27017/admin</div><div class="line">rs.initiate(&#123;_id:&quot;shard1&quot;,members:[&#123;_id:0,host:&quot;172.32.220.114:27017&quot;&#125;,&#123;_id:1,host:&quot;172.32.220.18:27017&quot;&#125;,&#123;_id:2,host:&quot;172.32.210.133:27017&quot;,arbiterOnly:true&#125;]&#125;)</div></pre></td></tr></table></figure>
+<h2 id="搭建mongos集群"><a href="#搭建mongos集群" class="headerlink" title="搭建mongos集群"></a>搭建mongos集群</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">mkdir -p /data/mongodb/mongos</div><div class="line">cat &gt; /data/mongodb/mongos.conf &lt;&lt;EOF</div><div class="line">sharding:</div><div class="line">   configDB: configServer/172.32.220.135:27018,172.32.210.111:27018,172.32.210.133:27018</div><div class="line"></div><div class="line">net:</div><div class="line">  port: 27019</div><div class="line">  bindIpAll: true</div><div class="line"></div><div class="line">systemLog:</div><div class="line">  destination: file</div><div class="line">  logRotate: reopen</div><div class="line">  path: /data/mongodb/mongos.log</div><div class="line">  logAppend: true</div><div class="line"></div><div class="line">processManagement:</div><div class="line">  fork: true</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h2 id="添加分片"><a href="#添加分片" class="headerlink" title="添加分片"></a>添加分片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~/mongo/bin/</div><div class="line">./mongos --config /data/mongodb/mongos.conf</div><div class="line">./mongo localhost:27019/admin</div><div class="line">sh.addShard(&quot;shard1/172.32.220.114:27017&quot;);</div></pre></td></tr></table></figure>
+<p>添加分片有时候会超时，出现<br>WriteConcernFailed: waiting for replication timed out。<br>多试几次即可。</p>
+<h2 id="删除分片"><a href="#删除分片" class="headerlink" title="删除分片"></a>删除分片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.runCommand(&#123;removeShard: &quot;shard3&quot;&#125;)</div></pre></td></tr></table></figure>
+<p>查询分片的副本情况<br>登录到分片，然后rs.status()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.runCommand(&#123;&quot;moveprimary&quot;:&quot;rtms&quot;,&quot;to&quot;:&quot;shard1&quot;&#125;)</div></pre></td></tr></table></figure>
+<h2 id="新增复制集成员"><a href="#新增复制集成员" class="headerlink" title="新增复制集成员"></a>新增复制集成员</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rs.add(&quot;172.32.220.18:27017&quot;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>参考 <a href="http://www.mongoing.com/docs/tutorial/expand-replica-set.html" target="_blank" rel="external">http://www.mongoing.com/docs/tutorial/expand-replica-set.html</a></p>
+</blockquote>
+<h2 id="删除复制集成员"><a href="#删除复制集成员" class="headerlink" title="删除复制集成员"></a>删除复制集成员</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rs.remove(&quot;172.32.220.18:27017&quot;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>参考 <a href="http://www.mongoing.com/docs/tutorial/remove-replica-set-member.html" target="_blank" rel="external">http://www.mongoing.com/docs/tutorial/remove-replica-set-member.html</a></p>
+</blockquote>
 
       
     </div>
@@ -467,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -530,6 +559,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建config集群"><span class="nav-number">2.</span> <span class="nav-text">搭建config集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建shard集群"><span class="nav-number">3.</span> <span class="nav-text">搭建shard集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建mongos集群"><span class="nav-number">4.</span> <span class="nav-text">搭建mongos集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加分片"><span class="nav-number">5.</span> <span class="nav-text">添加分片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除分片"><span class="nav-number">6.</span> <span class="nav-text">删除分片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新增复制集成员"><span class="nav-number">7.</span> <span class="nav-text">新增复制集成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除复制集成员"><span class="nav-number">8.</span> <span class="nav-text">删除复制集成员</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
