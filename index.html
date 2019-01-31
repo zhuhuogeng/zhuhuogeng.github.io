@@ -287,6 +287,140 @@
   
 
   <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/flume监控结果解读/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fire">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="☯☯">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/31/flume监控结果解读/" itemprop="url">flume监控结果解读</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-31T16:24:38+08:00">
+                2019-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/flume/" itemprop="url" rel="index">
+                    <span itemprop="name">flume</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">"SOURCE.clickAvroSource": &#123;</span><br><span class="line">  "EventReceivedCount": "1295984839", //目前为止source已经接收到的事件总数量</span><br><span class="line">  "AppendBatchAcceptedCount": "14854763", //成功提交到channel的批次的总数量</span><br><span class="line">  "Type": "SOURCE",</span><br><span class="line">  "EventAcceptedCount": "1295984839", //成功写出到channel的事件总数量，且source返回success给创建事件的sink或RPC客户端系统</span><br><span class="line">  "AppendReceivedCount": "0", //每批只有一个事件的事件总数量(与RPC调用中的一个append调用相等)</span><br><span class="line">  "StartTime": "1540800268751", //source启动时自Epoch以来的毫秒值时间</span><br><span class="line">  "AppendAcceptedCount": "0", //单独传入的事件到Channel且成功返回的事件总数量</span><br><span class="line">  "OpenConnectionCount": "3", //目前与客户端或sink保持连接的总数量(目前只有avro source展现该度量)</span><br><span class="line">  "AppendBatchReceivedCount": "14854763", //接收到事件批次的总数量</span><br><span class="line">  "StopTime": "0" //source停止时自Epoch以来的毫秒值时间</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"CHANNEL.clickKafkaChannel": &#123;</span><br><span class="line">  "ChannelCapacity": "214748360", //channel的容量</span><br><span class="line">  "ChannelFillPercentage": "5.229376373351582E-4", //channel满时的百分比</span><br><span class="line">  "Type": "CHANNEL",</span><br><span class="line">  "ChannelSize": "1123", //目前channel中事件的总数量</span><br><span class="line">  "EventTakeSuccessCount": "1295983716", //sink成功读取的事件的总数量</span><br><span class="line">  "EventTakeAttemptCount": "1304379676", //sink尝试从channel拉取事件的总数量。这不意味着每次事件都被返回，因为sink拉取的时候channel可能没有任何数据</span><br><span class="line">  "StartTime": "1540800268732", //channel启动时自Epoch以来的毫秒值时间</span><br><span class="line">  "EventPutAttemptCount": "1295984839", //Source尝试写入Channe的事件总数量</span><br><span class="line">  "EventPutSuccessCount": "1295984839", //成功写入channel且提交的事件总数量</span><br><span class="line">  "StopTime": "0" //channel停止时自Epoch以来的毫秒值时间</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"SINK.clickKafkaSink": &#123;</span><br><span class="line">  "ConnectionCreatedCount": "371", //下一个阶段或存储系统创建的连接数量（如HDFS创建一个新文件）</span><br><span class="line">  "ConnectionClosedCount": "370", //下一阶段或存储系统关闭的连接数量(如在HDFS中关闭一个文件)</span><br><span class="line">  "Type": "SINK",</span><br><span class="line">  "BatchCompleteCount": "5049", //与最大批量尺寸相等的批量的数量</span><br><span class="line">  "EventDrainAttemptCount": "1297084867", //sink尝试写出到存储的事件总数量</span><br><span class="line">  "BatchEmptyCount": "3605088", //空的批量的数量，如果数量很大表示souce写数据比sink清理数据慢速度慢很多</span><br><span class="line">  "StartTime": "1540800268734",</span><br><span class="line">  "EventDrainSuccessCount": "1295983716", //sink成功写出到存储的事件总数量</span><br><span class="line">  "BatchUnderflowCount": "3689721", //比sink配置使用的最大批量尺寸更小的批量的数量，如果该值很高也表示sink比souce更快</span><br><span class="line">  "StopTime": "0",</span><br><span class="line">  "ConnectionFailedCount": "948" //下一阶段或存储系统由于错误关闭的连接数量（如HDFS上一个新创建的文件因为超时而关闭）</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">"CHANNEL.clickLogAppendAvroChannel": &#123;</span><br><span class="line">  "ChannelCapacity": "214748360",</span><br><span class="line">  "ChannelFillPercentage": "2.584921719541886",</span><br><span class="line">  "Type": "CHANNEL",</span><br><span class="line">  "ChannelSize": "5551077",</span><br><span class="line">  "EventTakeSuccessCount": "1290433762",</span><br><span class="line">  "EventTakeAttemptCount": "1295783544",</span><br><span class="line">  "StartTime": "1540800256068",</span><br><span class="line">  "EventPutAttemptCount": "1295984839",</span><br><span class="line">  "EventPutSuccessCount": "1295984839",</span><br><span class="line">  "StopTime": "0"</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">"SINK.clickLogAppendAvroSink": &#123;</span><br><span class="line">  "ConnectionCreatedCount": "190",</span><br><span class="line">  "ConnectionClosedCount": "189",</span><br><span class="line">  "Type": "SINK",</span><br><span class="line">  "BatchCompleteCount": "69994",</span><br><span class="line">  "EventDrainAttemptCount": "1290966489",</span><br><span class="line">  "BatchEmptyCount": "1111298",</span><br><span class="line">  "StartTime": "1540800268734",</span><br><span class="line">  "EventDrainSuccessCount": "1290433762",</span><br><span class="line">  "BatchUnderflowCount": "3705757",</span><br><span class="line">  "StopTime": "0",</span><br><span class="line">  "ConnectionFailedCount": "641"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/intelliJ IDEA license server/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1566,7 +1700,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1577,7 +1711,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1588,7 +1722,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1630,7 +1764,7 @@
         <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
