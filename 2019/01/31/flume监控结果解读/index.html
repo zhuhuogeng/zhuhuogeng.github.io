@@ -10,6 +10,7 @@
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
 
 
 
@@ -36,36 +37,11 @@
 
 
 
+
   
   
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -74,7 +50,22 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
 
 
   <meta name="keywords" content="flume,">
@@ -82,11 +73,6 @@
 
 
 
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -113,9 +99,11 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -158,12 +146,6 @@
 
 
 
-
-
-
-
-
-
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -173,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -219,8 +201,28 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
@@ -230,11 +232,21 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
           </a>
         </li>
       
@@ -249,12 +261,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
-            关于
+            公益404
           </a>
         </li>
       
@@ -286,7 +298,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/flume监控结果解读/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -362,7 +378,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -378,6 +394,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -388,27 +407,15 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">"SOURCE.clickAvroSource": &#123;</span><br><span class="line">  "EventReceivedCount": "1295984839", //目前为止source已经接收到的事件总数量</span><br><span class="line">  "AppendBatchAcceptedCount": "14854763", //成功提交到channel的批次的总数量</span><br><span class="line">  "Type": "SOURCE",</span><br><span class="line">  "EventAcceptedCount": "1295984839", //成功写出到channel的事件总数量，且source返回success给创建事件的sink或RPC客户端系统</span><br><span class="line">  "AppendReceivedCount": "0", //每批只有一个事件的事件总数量(与RPC调用中的一个append调用相等)</span><br><span class="line">  "StartTime": "1540800268751", //source启动时自Epoch以来的毫秒值时间</span><br><span class="line">  "AppendAcceptedCount": "0", //单独传入的事件到Channel且成功返回的事件总数量</span><br><span class="line">  "OpenConnectionCount": "3", //目前与客户端或sink保持连接的总数量(目前只有avro source展现该度量)</span><br><span class="line">  "AppendBatchReceivedCount": "14854763", //接收到事件批次的总数量</span><br><span class="line">  "StopTime": "0" //source停止时自Epoch以来的毫秒值时间</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"CHANNEL.clickKafkaChannel": &#123;</span><br><span class="line">  "ChannelCapacity": "214748360", //channel的容量</span><br><span class="line">  "ChannelFillPercentage": "5.229376373351582E-4", //channel满时的百分比</span><br><span class="line">  "Type": "CHANNEL",</span><br><span class="line">  "ChannelSize": "1123", //目前channel中事件的总数量</span><br><span class="line">  "EventTakeSuccessCount": "1295983716", //sink成功读取的事件的总数量</span><br><span class="line">  "EventTakeAttemptCount": "1304379676", //sink尝试从channel拉取事件的总数量。这不意味着每次事件都被返回，因为sink拉取的时候channel可能没有任何数据</span><br><span class="line">  "StartTime": "1540800268732", //channel启动时自Epoch以来的毫秒值时间</span><br><span class="line">  "EventPutAttemptCount": "1295984839", //Source尝试写入Channe的事件总数量</span><br><span class="line">  "EventPutSuccessCount": "1295984839", //成功写入channel且提交的事件总数量</span><br><span class="line">  "StopTime": "0" //channel停止时自Epoch以来的毫秒值时间</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"SINK.clickKafkaSink": &#123;</span><br><span class="line">  "ConnectionCreatedCount": "371", //下一个阶段或存储系统创建的连接数量（如HDFS创建一个新文件）</span><br><span class="line">  "ConnectionClosedCount": "370", //下一阶段或存储系统关闭的连接数量(如在HDFS中关闭一个文件)</span><br><span class="line">  "Type": "SINK",</span><br><span class="line">  "BatchCompleteCount": "5049", //与最大批量尺寸相等的批量的数量</span><br><span class="line">  "EventDrainAttemptCount": "1297084867", //sink尝试写出到存储的事件总数量</span><br><span class="line">  "BatchEmptyCount": "3605088", //空的批量的数量，如果数量很大表示souce写数据比sink清理数据慢速度慢很多</span><br><span class="line">  "StartTime": "1540800268734",</span><br><span class="line">  "EventDrainSuccessCount": "1295983716", //sink成功写出到存储的事件总数量</span><br><span class="line">  "BatchUnderflowCount": "3689721", //比sink配置使用的最大批量尺寸更小的批量的数量，如果该值很高也表示sink比souce更快</span><br><span class="line">  "StopTime": "0",</span><br><span class="line">  "ConnectionFailedCount": "948" //下一阶段或存储系统由于错误关闭的连接数量（如HDFS上一个新创建的文件因为超时而关闭）</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">"CHANNEL.clickLogAppendAvroChannel": &#123;</span><br><span class="line">  "ChannelCapacity": "214748360",</span><br><span class="line">  "ChannelFillPercentage": "2.584921719541886",</span><br><span class="line">  "Type": "CHANNEL",</span><br><span class="line">  "ChannelSize": "5551077",</span><br><span class="line">  "EventTakeSuccessCount": "1290433762",</span><br><span class="line">  "EventTakeAttemptCount": "1295783544",</span><br><span class="line">  "StartTime": "1540800256068",</span><br><span class="line">  "EventPutAttemptCount": "1295984839",</span><br><span class="line">  "EventPutSuccessCount": "1295984839",</span><br><span class="line">  "StopTime": "0"</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">"SINK.clickLogAppendAvroSink": &#123;</span><br><span class="line">  "ConnectionCreatedCount": "190",</span><br><span class="line">  "ConnectionClosedCount": "189",</span><br><span class="line">  "Type": "SINK",</span><br><span class="line">  "BatchCompleteCount": "69994",</span><br><span class="line">  "EventDrainAttemptCount": "1290966489",</span><br><span class="line">  "BatchEmptyCount": "1111298",</span><br><span class="line">  "StartTime": "1540800268734",</span><br><span class="line">  "EventDrainSuccessCount": "1290433762",</span><br><span class="line">  "BatchUnderflowCount": "3705757",</span><br><span class="line">  "StopTime": "0",</span><br><span class="line">  "ConnectionFailedCount": "641"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -444,6 +451,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -459,11 +470,14 @@
 
 
           
-  <div class="comments" id="comments">
-    
+
+  
+    <div class="comments" id="comments">
       <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTY2NS82MjMz"></div>
-    
-  </div>
+    </div>
+
+  
+
 
 
         </div>
@@ -486,64 +500,66 @@
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="fire">
-          <p class="site-author-name" itemprop="name">fire</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="fire">
+            
+              <p class="site-author-name" itemprop="name">fire</p>
               <p class="site-description motion-element" itemprop="description">吾生也有涯，而知也无涯。以有涯随无涯，猝死了！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
+
+          
+
+          
+          
+
+          
+          
+
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -560,17 +576,37 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">fire</span>
+
+  
 </div>
 
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+
         
+
+
+
+
+
+
 
         
       </div>
@@ -581,6 +617,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -618,52 +656,68 @@
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
   
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/three.min.js"></script>
-
-  
-  <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
 
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
@@ -699,6 +753,12 @@
       })(document, 'script');
     </script>
   
+
+
+
+
+
+
 
 
 
@@ -822,6 +882,9 @@
 
   
 
+  
+
+  
   
 
   
