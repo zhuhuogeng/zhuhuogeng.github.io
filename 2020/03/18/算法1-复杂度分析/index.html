@@ -94,25 +94,28 @@
 
 
 
-  <meta name="description" content="nohupnohup(n ohang up)的意思是不挂起、永久执行nohup运行命令可以使运行的命令永久的执行下去，和用户终端没有关系，可以在你退出帐户/关闭终端之后继续运行相应的进程。例如我们断开SSH连接并不会影响他的运行(注意：nohup没有后台运行的意思，&amp;amp;才是后台运行)">
-<meta name="keywords" content="nohup">
+  <meta name="description" content="目标：  自行分析大部分数据结构和算法的时间、空间复杂度。在学习专栏中其他的时候，再不停地、有意识地去训练自己的复杂度分析能力。掌握递推公式、递归树分析方法    重要程度：10">
+<meta name="keywords" content="算法 数据结构 复杂度分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nohup &#x2F;dev&#x2F;null 2&gt;&amp;1 &amp;含义详解">
-<meta property="og:url" content="http://yoursite.com/2017/07/01/nohup含义详解/index.html">
+<meta property="og:title" content="算法篇1-复杂度分析">
+<meta property="og:url" content="http://yoursite.com/2020/03/18/算法1-复杂度分析/index.html">
 <meta property="og:site_name" content="☯☯">
-<meta property="og:description" content="nohupnohup(n ohang up)的意思是不挂起、永久执行nohup运行命令可以使运行的命令永久的执行下去，和用户终端没有关系，可以在你退出帐户/关闭终端之后继续运行相应的进程。例如我们断开SSH连接并不会影响他的运行(注意：nohup没有后台运行的意思，&amp;amp;才是后台运行)">
+<meta property="og:description" content="目标：  自行分析大部分数据结构和算法的时间、空间复杂度。在学习专栏中其他的时候，再不停地、有意识地去训练自己的复杂度分析能力。掌握递推公式、递归树分析方法    重要程度：10">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-24T10:14:06.000Z">
+<meta property="og:image" content="http://yoursite.com/images/复杂度量级.png">
+<meta property="og:image" content="http://yoursite.com/images/复杂度量级与时间的关系图.png">
+<meta property="og:updated_time" content="2020-03-18T10:31:27.869Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nohup &#x2F;dev&#x2F;null 2&gt;&amp;1 &amp;含义详解">
-<meta name="twitter:description" content="nohupnohup(n ohang up)的意思是不挂起、永久执行nohup运行命令可以使运行的命令永久的执行下去，和用户终端没有关系，可以在你退出帐户/关闭终端之后继续运行相应的进程。例如我们断开SSH连接并不会影响他的运行(注意：nohup没有后台运行的意思，&amp;amp;才是后台运行)">
+<meta name="twitter:title" content="算法篇1-复杂度分析">
+<meta name="twitter:description" content="目标：  自行分析大部分数据结构和算法的时间、空间复杂度。在学习专栏中其他的时候，再不停地、有意识地去训练自己的复杂度分析能力。掌握递推公式、递归树分析方法    重要程度：10">
+<meta name="twitter:image" content="http://yoursite.com/images/复杂度量级.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/01/nohup含义详解/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/18/算法1-复杂度分析/">
 
 
 
@@ -122,7 +125,7 @@
   };
 </script>
 
-  <title>nohup /dev/null 2>&1 &含义详解 | ☯☯</title>
+  <title>算法篇1-复杂度分析 | ☯☯</title>
   
 
 
@@ -347,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/01/nohup含义详解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/算法1-复杂度分析/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fire">
@@ -364,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nohup /dev/null 2>&1 &含义详解
+          <h1 class="post-title" itemprop="name headline">算法篇1-复杂度分析
 
               
             
@@ -390,24 +393,12 @@
                 
               
 
-              <time title="创建时间：2017-07-01 11:05:11" itemprop="dateCreated datePublished" datetime="2017-07-01T11:05:11+08:00">2017-07-01</time>
+              <time title="创建时间：2020-03-18 13:12:48 / 修改时间：18:31:27" itemprop="dateCreated datePublished" datetime="2020-03-18T13:12:48+08:00">2020-03-18</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-10-24 18:14:06" itemprop="dateModified" datetime="2017-10-24T18:14:06+08:00">2017-10-24</time>
               
             
           </span>
@@ -424,7 +415,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -439,7 +430,7 @@
 
           
           
-            <span id="/2017/07/01/nohup含义详解/" class="leancloud_visitors" data-flag-title="nohup /dev/null 2>&1 &含义详解">
+            <span id="/2020/03/18/算法1-复杂度分析/" class="leancloud_visitors" data-flag-title="算法篇1-复杂度分析">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -470,17 +461,28 @@
       
 
       
-        <h2 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h2><p>nohup(n ohang up)的意思是不挂起、永久执行<br>nohup运行命令可以使运行的命令永久的执行下去，和用户终端没有关系，可以在你退出帐户/关闭终端之后继续运行相应的进程。例如我们断开SSH连接并不会影响他的运行(注意：nohup没有后台运行的意思，&amp;才是后台运行)<br><a id="more"></a></p>
-<h2 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h2><p>&amp;是指在后台运行，当用户退出(挂起)、关闭终端的时候，后台运行的这条命令也会退出</p>
-<h2 id="dev-null"><a href="#dev-null" class="headerlink" title="/dev/null"></a>/dev/null</h2><p>/dev/null表示垃圾桶的意思，类似windows的回收站</p>
-<h2 id="2-gt-amp-1"><a href="#2-gt-amp-1" class="headerlink" title="2&gt;&amp;1"></a>2&gt;&amp;1</h2><p>2表示错误输出，1表示标准输出，&gt;表示重定向<br>所以2&gt;&amp;1连起来就是：将错误输出重定向到标准输出<br>为什么不写成2&gt;1呢？在这里，2与&gt;结合代表错误重定向，而1则代表错误重定向到一个文件1，而不代表标准输出，需要加上&amp;</p>
-<p>为了验证2&gt;&amp;1，可以做如下的测试<br>当前目录没有任何文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">$</span><br></pre></td></tr></table></figure></p>
-<p>ls 2&gt;1<br>运行ls 2&gt;1，不会报没有2文件的错误，会生成一个空的文件1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ls 2&gt;1</span><br><span class="line">1</span><br><span class="line">$ ls</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
-<p>ls notExist 2&gt;1<br>先删除上一次生成的文件1，运行ls notExist 2&gt;1，没有notExist这个目录的错误输出到了1中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ rm 1</span><br><span class="line">$ ls notExist 2&gt;1</span><br><span class="line">$ cat 1</span><br><span class="line">ls: notExist: No such file or directory</span><br></pre></td></tr></table></figure></p>
-<p>ls notExist 2&gt;&amp;1<br>先删除上一次生成的文件1，运行ls notExist 2&gt;&amp;1，屏幕直接输出了错误信息，没有生成文件1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ rm 1</span><br><span class="line">$ notExist 2&gt;&amp;1</span><br><span class="line">ls: notExist: No such file or directory</span><br><span class="line">$ ls</span><br><span class="line">$</span><br></pre></td></tr></table></figure></p>
-<p>ls notExist &gt;log.txt 2&gt;&amp;1<br>运行ls notExist &gt;log.txt 2&gt;&amp;1, 生成了一个log.txt的文件， 并且错误输出打印到了文件里面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ls notExist &gt;log.txt 2&gt;&amp;1</span><br><span class="line">$ ls</span><br><span class="line">log.txt</span><br><span class="line">$ cat log.txt</span><br><span class="line">ls: notExist: No such file or directory</span><br><span class="line">$</span><br></pre></td></tr></table></figure></p>
-<h2 id="gt-dev-null-2-gt-amp-1-和-2-gt-amp-1-gt-dev-null的区别"><a href="#gt-dev-null-2-gt-amp-1-和-2-gt-amp-1-gt-dev-null的区别" class="headerlink" title="&gt; /dev/null 2&gt;&amp;1 和 2&gt;&amp;1 &gt; /dev/null的区别"></a>&gt; /dev/null 2&gt;&amp;1 和 2&gt;&amp;1 &gt; /dev/null的区别</h2><p>&gt; /dev/null 2&gt;&amp;1: 标准输出和错误输出都被重定向到回收站<br>2&gt;&amp;1 &gt; /dev/null: 错误输出到终端，标准输出被重定向到回收站</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所以，nohup command /dev/null 2&gt;&amp;1 &amp;的意思就是，将command保持在后台运行，并且将输出的日志忽略</p>
+        <p>目标：</p>
+<blockquote>
+<p>自行分析大部分数据结构和算法的时间、空间复杂度。在学习专栏中其他的时候，再不停地、有意识地去训练自己的复杂度分析能力。<br>掌握递推公式、递归树分析方法  </p>
+</blockquote>
+<p>重要程度：10</p>
+<a id="more"></a>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>复杂度也叫渐进复杂度，包括时间复杂度和空间复杂度，用来分析算法执行效率与数据规模之间的增长关系。<br>可以粗略地表示，越高阶复杂度的算法，执行效率越低。<br>常见的复杂度从低阶到高阶有：O(1)、O(logn)、O(n)、O(nlogn)、O(n2)  </p>
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>时间复杂度全称渐进时间复杂度（asymptotic time complexity），代码执行时间随数据规模增长的变化趋势。  </p>
+<h2 id="大O时间复杂度表示法"><a href="#大O时间复杂度表示法" class="headerlink" title="大O时间复杂度表示法"></a>大O时间复杂度表示法</h2><p>T<n> = O(f<n>)  </n></n></p>
+<blockquote>
+<p>T(n): 表示代码执行的时间<br>n: 表示数据规模的大小<br>f(n): 表示每行代码执行的次数总和。因为这是一个公式，所以用 f(n) 来表示<br>O: 表示代码的执行时间 T(n) 与 f(n) 表达式成正比  </p>
+</blockquote>
+<h2 id="常见时间复杂度"><a href="#常见时间复杂度" class="headerlink" title="常见时间复杂度"></a>常见时间复杂度</h2><p><img src="/images/复杂度量级.png" alt="常见时间复杂度"></p>
+<h2 id="时间复杂度分析方法"><a href="#时间复杂度分析方法" class="headerlink" title="时间复杂度分析方法"></a>时间复杂度分析方法</h2><ol>
+<li>只关注循环执行次数最多的一段代码  </li>
+<li>加法法则：总复杂度等于量级最大的那段代码的复杂度  </li>
+<li>乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积  </li>
+</ol>
+<h2 id="常见时间复杂度实例分析"><a href="#常见时间复杂度实例分析" class="headerlink" title="常见时间复杂度实例分析"></a>常见时间复杂度实例分析</h2><h3 id="O-1"><a href="#O-1" class="headerlink" title="O(1)"></a>O(1)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">int</span> j = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> sum = i + j;</span><br></pre></td></tr></table></figure>
+<h3 id="O-logn-、O-nlogn"><a href="#O-logn-、O-nlogn" class="headerlink" title="O(logn)、O(nlogn)"></a>O(logn)、O(nlogn)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt;= n)  &#123;</span><br><span class="line">  i = i * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h1><p>空间复杂度全称渐进空间复杂度（asymptotic space complexity），表示算法的存储空间与数据规模之间的增长关系。<br>常见的空间复杂度就是 O(1)、O(n)、O(n2)，像 O(logn)、O(nlogn) 这样的对数阶复杂度平时都用不到。  </p>
+<h1 id="复杂度与效率的关系"><a href="#复杂度与效率的关系" class="headerlink" title="复杂度与效率的关系"></a>复杂度与效率的关系</h1><p><img src="/images/复杂度量级与时间的关系图.png" alt="复杂度与效率的关系"></p>
 
       
     </div>
@@ -504,7 +506,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/nohup/" rel="tag"># nohup</a>
+            <a href="/tags/算法-数据结构-复杂度分析/" rel="tag"># 算法 数据结构 复杂度分析</a>
           
         </div>
       
@@ -517,15 +519,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2020/03/18/数据结构与算法学习笔记/" rel="next" title="数据结构与算法学习笔记">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法学习笔记
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/22/nginx日志切割脚本/" rel="prev" title="nginx日志切割脚本">
-                nginx日志切割脚本 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -694,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nohup"><span class="nav-number">1.</span> <span class="nav-text">nohup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#amp"><span class="nav-number">2.</span> <span class="nav-text">&amp;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dev-null"><span class="nav-number">3.</span> <span class="nav-text">/dev/null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-gt-amp-1"><span class="nav-number">4.</span> <span class="nav-text">2&gt;&amp;1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt-dev-null-2-gt-amp-1-和-2-gt-amp-1-gt-dev-null的区别"><span class="nav-number">5.</span> <span class="nav-text">&gt; /dev/null 2&gt;&amp;1 和 2&gt;&amp;1 &gt; /dev/null的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间复杂度"><span class="nav-number">2.</span> <span class="nav-text">时间复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大O时间复杂度表示法"><span class="nav-number">2.1.</span> <span class="nav-text">大O时间复杂度表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见时间复杂度"><span class="nav-number">2.2.</span> <span class="nav-text">常见时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度分析方法"><span class="nav-number">2.3.</span> <span class="nav-text">时间复杂度分析方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见时间复杂度实例分析"><span class="nav-number">2.4.</span> <span class="nav-text">常见时间复杂度实例分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#O-1"><span class="nav-number">2.4.1.</span> <span class="nav-text">O(1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#O-logn-、O-nlogn"><span class="nav-number">2.4.2.</span> <span class="nav-text">O(logn)、O(nlogn)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#空间复杂度"><span class="nav-number">3.</span> <span class="nav-text">空间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复杂度与效率的关系"><span class="nav-number">4.</span> <span class="nav-text">复杂度与效率的关系</span></a></li></ol></div>
             
 
           </div>
@@ -840,7 +842,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2017/07/01/nohup含义详解/'
+    refer: '2020/03/18/算法1-复杂度分析/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
