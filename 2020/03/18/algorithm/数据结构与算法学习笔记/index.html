@@ -94,25 +94,24 @@
 
 
 
-  <meta name="description" content="主要用于nginx的日志切割，将日志按天保存">
-<meta name="keywords" content="script">
+  <meta name="keywords" content="算法,数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx日志切割脚本">
-<meta property="og:url" content="http://yoursite.com/2017/07/22/nginx日志切割脚本/index.html">
+<meta property="og:title" content="数据结构与算法学习笔记">
+<meta property="og:url" content="http://yoursite.com/2020/03/18/algorithm/数据结构与算法学习笔记/index.html">
 <meta property="og:site_name" content="☯☯">
-<meta property="og:description" content="主要用于nginx的日志切割，将日志按天保存">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-07-22T04:18:52.000Z">
+<meta property="og:image" content="http://yoursite.com/images/algorithm.png">
+<meta property="og:updated_time" content="2020-04-20T15:46:10.315Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx日志切割脚本">
-<meta name="twitter:description" content="主要用于nginx的日志切割，将日志按天保存">
+<meta name="twitter:title" content="数据结构与算法学习笔记">
+<meta name="twitter:image" content="http://yoursite.com/images/algorithm.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/22/nginx日志切割脚本/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/18/algorithm/数据结构与算法学习笔记/">
 
 
 
@@ -122,7 +121,7 @@
   };
 </script>
 
-  <title>nginx日志切割脚本 | ☯☯</title>
+  <title>数据结构与算法学习笔记 | ☯☯</title>
   
 
 
@@ -347,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/22/nginx日志切割脚本/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/algorithm/数据结构与算法学习笔记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fire">
@@ -364,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nginx日志切割脚本
+          <h1 class="post-title" itemprop="name headline">数据结构与算法学习笔记
 
               
             
@@ -390,12 +389,24 @@
                 
               
 
-              <time title="创建时间：2017-07-22 11:39:07 / 修改时间：12:18:52" itemprop="dateCreated datePublished" datetime="2017-07-22T11:39:07+08:00">2017-07-22</time>
+              <time title="创建时间：2020-03-18 11:43:18" itemprop="dateCreated datePublished" datetime="2020-03-18T11:43:18+08:00">2020-03-18</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-20 23:46:10" itemprop="dateModified" datetime="2020-04-20T23:46:10+08:00">2020-04-20</time>
               
             
           </span>
@@ -412,7 +423,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/servers/" itemprop="url" rel="index"><span itemprop="name">servers</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -427,7 +438,7 @@
 
           
           
-            <span id="/2017/07/22/nginx日志切割脚本/" class="leancloud_visitors" data-flag-title="nginx日志切割脚本">
+            <span id="/2020/03/18/algorithm/数据结构与算法学习笔记/" class="leancloud_visitors" data-flag-title="数据结构与算法学习笔记">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -458,9 +469,107 @@
       
 
       
-        <p>主要用于nginx的日志切割，将日志按天保存<br><a id="more"></a></p>
-<p>脚本：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>###############################################################################</span><br><span class="line"><span class="meta">#</span>#                                                                            ##</span><br><span class="line"><span class="meta">#</span>#  nginx日志切割脚本                                                          ##</span><br><span class="line"><span class="meta">#</span>#                                                                            ##</span><br><span class="line"><span class="meta">#</span>###############################################################################</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>设置日志文件存放目录</span><br><span class="line">logs_path="/usr/local/nginx/logs/"</span><br><span class="line"><span class="meta">#</span>设置pid文件</span><br><span class="line">pid_path="/usr/local/nginx/logs/nginx.pid"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>重命名日志文件</span><br><span class="line">mv $&#123;logs_path&#125;access.log $&#123;logs_path&#125;access_$(date -d "yesterday" +"%Y%m%d").log</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>向nginx主进程发信号重新打开日志</span><br><span class="line">kill -USR1 `cat $&#123;pid_path&#125;`</span><br></pre></td></tr></table></figure></p>
-<p>添加crontab每天0点运行日志切割脚本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0 * * * sh /scriptDir/nginx_split.sh &gt;&gt; /scriptDir/logs/nginx_split.log 2&gt;&amp;1</span><br></pre></td></tr></table></figure></p>
+        <p><img src="/images/algorithm.png" alt="学习路线图"></p>
+<a id="more"></a>
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>目标：</p>
+<blockquote>
+<p>自行分析大部分数据结构和算法的时间、空间复杂度。在学习专栏中其他的时候，再不停地、有意识地去训练自己的复杂度分析能力。<br>掌握递推公式、递归树分析方法  </p>
+</blockquote>
+<p>重要程度：10<br><strong></strong></p>
+<h2 id="数组、栈、队列"><a href="#数组、栈、队列" class="headerlink" title="数组、栈、队列"></a>数组、栈、队列</h2><p>这一部分内容非常简单，初学者学起来也不会很难。但是，作为基础的数据结构，数组、栈、队列，是后续很多复杂数据结构和算法的基础，所以，这些内容你一定要掌握。<br>目标：</p>
+<blockquote>
+<p>实现动态数组、栈、队列</p>
+</blockquote>
+<p>重要程度：8</p>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>链表非常重要！虽然理论内容不多，但链表上的操作却很复杂。所以，面试中经常会考察，你一定要掌握。而且，我这里说“掌握”不只是能看懂专栏中的内容，还能将专栏中提到的经典链表题目，比如链表反转、求中间结点等，轻松无 bug 地实现出来。<br>目标：</p>
+<blockquote>
+<p>能轻松写出经典链表题目代码</p>
+</blockquote>
+<p>重要程度：9</p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>对于初学者来说，递归代码非常难掌握，不管是读起来，还是写起来。但是，这道坎你必须要跨过，跨不过就不能算是入门数据结构和算法。我们后面讲到的很多数据结构和算法的代码实现，都要用到递归。递归相关的理论知识也不多，所以还是要多练。你可以先在网上找些简单的题目练手，比如斐波那契数列、求阶乘等，然后再慢慢过渡到更加有难度的，比如归并排序、快速排序、二叉树的遍历、求高度，最后是回溯八皇后、背包问题等。<br>目标：</p>
+<blockquote>
+<p>轻松写出二叉树遍历、八皇后、背包问题、DFS 的递归代码</p>
+</blockquote>
+<p>重要程度：10</p>
+<h2 id="排序、二分查找"><a href="#排序、二分查找" class="headerlink" title="排序、二分查找"></a>排序、二分查找</h2><p>这一部分并不难，你只需要能看懂我专栏里的内容即可。<br>目标：</p>
+<blockquote>
+<p>能自己把各种排序算法、二分查找及其变体代码写一遍就可以了</p>
+</blockquote>
+<p>重要程度：7</p>
+<h2 id="跳表"><a href="#跳表" class="headerlink" title="跳表"></a>跳表</h2><p>对于初学者来说，并不需要非得掌握跳表，所以，如果没有精力，这一章节可以先跳过。<br>目标：</p>
+<blockquote>
+<p>初学者可以先跳过。如果感兴趣，看懂专栏内容即可，不需要掌握代码实现</p>
+</blockquote>
+<p>重要程度：6</p>
+<h2 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h2><p>尽管散列表的内容我讲了很多，有三节课。但是，总体上来讲，这块内容理解起来并不难。但是，作为一种应用非常广泛的数据结构，你还是要掌握牢固散列表。<br>目标：</p>
+<blockquote>
+<p>对于初学者来说，自己能代码实现一个拉链法解决冲突的散列表即可</p>
+</blockquote>
+<p>重要程度：8</p>
+<h2 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h2><p>这部分纯粹是为了开拓思路，初学者可以略过<br>目标：</p>
+<blockquote>
+<p>可以暂时不看</p>
+</blockquote>
+<p>重要程度：3</p>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>这一部分非常重要！二叉树在面试中经常会被考到，所以要重点掌握。但是我这里说的二叉树，并不包含专栏中红黑树的内容。红黑树我们待会再讲。<br>目标：</p>
+<blockquote>
+<p>能代码实现二叉树的三种遍历算法、按层遍历、求高度等经典二叉树题目</p>
+</blockquote>
+<p>重要程度：9</p>
+<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p>对于初学者来说，这一节课完全可以不看<br>目标：</p>
+<blockquote>
+<p>初学者不用把时间浪费在上面</p>
+</blockquote>
+<p>重要程度：3</p>
+<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><p>目标：</p>
+<blockquote>
+<p>可看可不看，能看懂专栏里的讲解就可以</p>
+</blockquote>
+<p>重要程度：5</p>
+<h2 id="堆与堆排序"><a href="#堆与堆排序" class="headerlink" title="堆与堆排序"></a>堆与堆排序</h2><p>这一部分内容不是很难，初学者也是要掌握的。<br>目标：</p>
+<blockquote>
+<p>能代码实现堆、堆排序，并且掌握堆的三种应用（优先级队列、Top k、中位数）</p>
+</blockquote>
+<p>重要程度：8</p>
+<h2 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h2><p>图的内容很多，但是初学者不需要掌握那么多。一般 BAT 等大厂面试，不怎么会面试有关图的内容，因为面试官可能也对这块不会很熟悉哈：）。但是，最基本图的概念、表示方法还是要掌握的。<br>目标：</p>
+<blockquote>
+<p>理解图的三种表示方法（邻接矩阵、邻接表、逆邻接表），能自己代码实现</p>
+</blockquote>
+<p>重要程度：8</p>
+<h2 id="深度广度优先搜索"><a href="#深度广度优先搜索" class="headerlink" title="深度广度优先搜索"></a>深度广度优先搜索</h2><p>这算是图上最基础的遍历或者说是搜索算法了，所以还是要掌握一下。这两种算法的原理都不难哈，但是代码实现并不简单，一个用到了队列，另一个用到了递归。对于初学者来说，看懂这两个代码实现就是一个挑战！可以等到其他更重要的内容都掌握之后，再来挑战，也是可以的。<br>目标：  </p>
+<blockquote>
+<p>能代码实现广度优先、深度优先搜索算法</p>
+</blockquote>
+<p>重要程度：8</p>
+<h2 id="拓扑排序、最短路径、A-算法"><a href="#拓扑排序、最短路径、A-算法" class="headerlink" title="拓扑排序、最短路径、A* 算法"></a>拓扑排序、最短路径、A* 算法</h2><p>这几个算法稍微高级点。如果你能轻松实现深度、广度优先搜索，那看懂这三个算法不成问题。不过，这三种算法不是重点。面试不会考的<br>目标：  </p>
+<blockquote>
+</blockquote>
+<p>重要程度：5</p>
+<h2 id="字符串匹配（BF、RK）"><a href="#字符串匹配（BF、RK）" class="headerlink" title="字符串匹配（BF、RK）"></a>字符串匹配（BF、RK）</h2><p>目标：  </p>
+<blockquote>
+<p>能实践 BF 算法，能看懂 RK 算法  </p>
+</blockquote>
+<p>重要程度：7</p>
+<h2 id="字符串匹配（BM、KMP、AC-自动机）"><a href="#字符串匹配（BM、KMP、AC-自动机）" class="headerlink" title="字符串匹配（BM、KMP、AC 自动机）"></a>字符串匹配（BM、KMP、AC 自动机）</h2><p>较难，看懂不容易，即使要学，看懂就好<br>目标：  </p>
+<blockquote>
+<p>初学者不用把时间浪费在上面  </p>
+</blockquote>
+<p>重要程度：3</p>
+<h2 id="字符串匹配（Trie）"><a href="#字符串匹配（Trie）" class="headerlink" title="字符串匹配（Trie）"></a>字符串匹配（Trie）</h2><p>目标：  </p>
+<blockquote>
+<p>能看懂，知道特点、应用场景即可，不要求代码实现  </p>
+</blockquote>
+<p>重要程度：7</p>
+<h2 id="位图"><a href="#位图" class="headerlink" title="位图"></a>位图</h2><p>目标：  </p>
+<blockquote>
+<p>位图不是重点，如果有余力最好掌握一下。看懂即可，能自己实现一个位图结构最好  </p>
+</blockquote>
+<p>重要程度：6</p>
+<h2 id="四种算法思想"><a href="#四种算法思想" class="headerlink" title="四种算法思想"></a>四种算法思想</h2><p>可以放到最后，但是一定要掌握！<br>目标：</p>
+<blockquote>
+<p>能实现 Leetcode 上 Medium 难度的题目  </p>
+</blockquote>
+<p>重要程度：10</p>
 
       
     </div>
@@ -484,7 +593,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/script/" rel="tag"># script</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
           
         </div>
       
@@ -497,8 +608,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/01/nohup含义详解/" rel="next" title="nohup /dev/null 2>&1 &含义详解">
-                <i class="fa fa-chevron-left"></i> nohup /dev/null 2>&1 &含义详解
+              <a href="/2019/01/31/flume监控结果解读/" rel="next" title="flume监控结果解读">
+                <i class="fa fa-chevron-left"></i> flume监控结果解读
               </a>
             
           </div>
@@ -507,8 +618,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/22/linux进程守护脚本/" rel="prev" title="linux进程守护脚本">
-                linux进程守护脚本 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/18/algorithm/算法1-复杂度分析/" rel="prev" title="算法篇1-复杂度分析">
+                算法篇1-复杂度分析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -559,8 +670,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -666,6 +786,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂度分析"><span class="nav-number">1.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组、栈、队列"><span class="nav-number">2.</span> <span class="nav-text">数组、栈、队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表"><span class="nav-number">3.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归"><span class="nav-number">4.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序、二分查找"><span class="nav-number">5.</span> <span class="nav-text">排序、二分查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳表"><span class="nav-number">6.</span> <span class="nav-text">跳表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#散列表"><span class="nav-number">7.</span> <span class="nav-text">散列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希算法"><span class="nav-number">8.</span> <span class="nav-text">哈希算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树"><span class="nav-number">9.</span> <span class="nav-text">二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#红黑树"><span class="nav-number">10.</span> <span class="nav-text">红黑树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树"><span class="nav-number">11.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆与堆排序"><span class="nav-number">12.</span> <span class="nav-text">堆与堆排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的表示"><span class="nav-number">13.</span> <span class="nav-text">图的表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度广度优先搜索"><span class="nav-number">14.</span> <span class="nav-text">深度广度优先搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓扑排序、最短路径、A-算法"><span class="nav-number">15.</span> <span class="nav-text">拓扑排序、最短路径、A* 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串匹配（BF、RK）"><span class="nav-number">16.</span> <span class="nav-text">字符串匹配（BF、RK）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串匹配（BM、KMP、AC-自动机）"><span class="nav-number">17.</span> <span class="nav-text">字符串匹配（BM、KMP、AC 自动机）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串匹配（Trie）"><span class="nav-number">18.</span> <span class="nav-text">字符串匹配（Trie）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位图"><span class="nav-number">19.</span> <span class="nav-text">位图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四种算法思想"><span class="nav-number">20.</span> <span class="nav-text">四种算法思想</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -806,7 +943,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2017/07/22/nginx日志切割脚本/'
+    refer: '2020/03/18/algorithm/数据结构与算法学习笔记/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
