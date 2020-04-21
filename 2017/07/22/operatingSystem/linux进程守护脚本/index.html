@@ -24,7 +24,7 @@
 <meta name="keywords" content="script">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux进程守护脚本">
-<meta property="og:url" content="http://yoursite.com/2017/07/22/linux进程守护脚本/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/07/22/operatingSystem/linux进程守护脚本/index.html">
 <meta property="og:site_name" content="☯☯">
 <meta property="og:description" content="定时检查指定进程是否存在，不存在则启动">
 <meta property="og:locale" content="zh-CN">
@@ -33,7 +33,7 @@
 <meta name="twitter:title" content="linux进程守护脚本">
 <meta name="twitter:description" content="定时检查指定进程是否存在，不存在则启动">
 
-<link rel="canonical" href="http://yoursite.com/2017/07/22/linux进程守护脚本/">
+<link rel="canonical" href="http://yoursite.com/2017/07/22/operatingSystem/linux进程守护脚本/">
 
 
 <script id="page-configurations">
@@ -148,7 +148,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">14</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">12</span></a>
 
   </li>
   </ul>
@@ -179,7 +179,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/22/linux进程守护脚本/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/22/operatingSystem/linux进程守护脚本/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -216,7 +216,7 @@
             </span>
 
           
-            <span id="/2017/07/22/linux进程守护脚本/" class="post-meta-item leancloud_visitors" data-flag-title="linux进程守护脚本" title="阅读次数">
+            <span id="/2017/07/22/operatingSystem/linux进程守护脚本/" class="post-meta-item leancloud_visitors" data-flag-title="linux进程守护脚本" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -234,12 +234,12 @@
 
       
         <p>定时检查指定进程是否存在，不存在则启动<br><a id="more"></a></p>
-<p>脚本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>###############################################################################</span><br><span class="line"><span class="meta">#</span>#                                                                            ##</span><br><span class="line"><span class="meta">#</span>#  linux进程守护脚本                                                          ##</span><br><span class="line"><span class="meta">#</span>#                                                                            ##</span><br><span class="line"><span class="meta">#</span>###############################################################################</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if [ -f ~/.bash_profile ]; then</span><br><span class="line">	source ~/.bash_profile</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">log() &#123;</span><br><span class="line">	msg=$1</span><br><span class="line">	date_str=`date +"%Y-%m-%d %H:%M:%S"`</span><br><span class="line">	echo "[$date_str] $msg"</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">curdir=`dirname $0`</span><br><span class="line">config_file=daemon.config</span><br><span class="line">app_log_dir=logs</span><br><span class="line"></span><br><span class="line">config_file_full=$curdir/$config_file</span><br><span class="line">app_log_dir_full=$curdir/$app_log_dir</span><br><span class="line"></span><br><span class="line">log "begin to monitor"</span><br><span class="line">cat $config_file_full | while read line</span><br><span class="line">do</span><br><span class="line">	name=`echo "$line" | awk -F '###' '&#123;print $1&#125;'`</span><br><span class="line">	process=`echo "$line" | awk -F '###' '&#123;print $2&#125;'`</span><br><span class="line">	if [ -z "$name" ] || [ -z "$process" ] ; then</span><br><span class="line">		echo "$name config error"</span><br><span class="line">		continue</span><br><span class="line">	fi</span><br><span class="line">	count=`ps -ef | grep "$process" | grep -v grep |  grep $USER | wc -l`</span><br><span class="line">	log "$name: $count"</span><br><span class="line">	if [ $count -gt 0 ]; then</span><br><span class="line">		log "$name is alived"</span><br><span class="line">	else</span><br><span class="line"><span class="meta">		$</span>process &amp;</span><br><span class="line">		log "$name is dead, restart"</span><br><span class="line">	fi</span><br><span class="line">done</span><br><span class="line">log "end to monitor"</span><br></pre></td></tr></table></figure></p>
+<p>脚本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#                                                                            ##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#  linux进程守护脚本                                                          ##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#                                                                            ##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###############################################################################</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if [ -f ~/.bash_profile ]; then</span><br><span class="line">	source ~/.bash_profile</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">log() &#123;</span><br><span class="line">	msg=$1</span><br><span class="line">	date_str=`date +"%Y-%m-%d %H:%M:%S"`</span><br><span class="line">	echo "[$date_str] $msg"</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">curdir=`dirname $0`</span><br><span class="line">config_file=daemon.config</span><br><span class="line">app_log_dir=logs</span><br><span class="line"></span><br><span class="line">config_file_full=$curdir/$config_file</span><br><span class="line">app_log_dir_full=$curdir/$app_log_dir</span><br><span class="line"></span><br><span class="line">log "begin to monitor"</span><br><span class="line">cat $config_file_full | while read line</span><br><span class="line">do</span><br><span class="line">	name=`echo "$line" | awk -F '###' '&#123;print $1&#125;'`</span><br><span class="line">	process=`echo "$line" | awk -F '###' '&#123;print $2&#125;'`</span><br><span class="line">	if [ -z "$name" ] || [ -z "$process" ] ; then</span><br><span class="line">		echo "$name config error"</span><br><span class="line">		continue</span><br><span class="line">	fi</span><br><span class="line">	count=`ps -ef | grep "$process" | grep -v grep |  grep $USER | wc -l`</span><br><span class="line">	log "$name: $count"</span><br><span class="line">	if [ $count -gt 0 ]; then</span><br><span class="line">		log "$name is alived"</span><br><span class="line">	else</span><br><span class="line"><span class="meta">		$</span><span class="bash">process &amp;</span></span><br><span class="line">		log "$name is dead, restart"</span><br><span class="line">	fi</span><br><span class="line">done</span><br><span class="line">log "end to monitor"</span><br></pre></td></tr></table></figure></p>
 <p>添加脚本配置文件daemon.config</p>
 <blockquote>
 <p>配置文件格式为 程序名称###启动命令. 例如</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">nginx#</span>##/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">nginx#</span><span class="bash"><span class="comment">##/usr/local/nginx/sbin/nginx</span></span></span><br></pre></td></tr></table></figure>
 <p>添加crontab每2分钟运行一次脚本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">*/2 * * * * sh /scriptDir/daemon.sh &gt;&gt;  /scriptDir/logs/daemon.log 2&gt;&amp;1</span><br></pre></td></tr></table></figure></p>
 
     </div>
@@ -259,11 +259,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2017/07/22/nginx日志切割脚本/" rel="prev" title="nginx日志切割脚本">
+    <a href="/2017/07/22/middleware/nginx日志切割脚本/" rel="prev" title="nginx日志切割脚本">
       <i class="fa fa-chevron-left"></i> nginx日志切割脚本
     </a></div>
       <div class="post-nav-item">
-    <a href="/2017/07/22/nginx搭建/" rel="next" title="nginx搭建">
+    <a href="/2017/07/22/middleware/nginx搭建/" rel="next" title="nginx搭建">
       nginx搭建 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -343,7 +343,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -454,7 +454,7 @@
         });
     }
 
-    let { app_id, app_key, server_url } = {"enable":true,"app_id":"aTwNIbzOzQIUK80OyWgNtPj6-gzGzoHsz","app_key":"mRaTA6GSAO7wzgTrj1YXyogQ","server_url":null,"security":false};
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"aTwNIbzOzQIUK80OyWgNtPj6-gzGzoHsz","app_key":"mRaTA6GSAO7wzgTrj1YXyogQ","server_url":"https://zhuhuogeng.github.io/","security":false};
     function fetchData(api_server) {
       var Counter = (method, url, data) => {
         return fetch(`${api_server}/1.1${url}`, {
