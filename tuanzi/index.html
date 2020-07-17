@@ -4,7 +4,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>程序员老黄历</title>
+		<title>团子的老黄历</title>
 	<script id="jquery_183" type="text/javascript" class="library" src="./jquery-1.8.3.min.js"></script>
 	</head>
 	<body>
@@ -247,33 +247,20 @@ var iday = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.ge
 var weeks = ["日","一","二","三","四","五","六"];
 var directions = ["北方","东北方","东方","东南方","南方","西南方","西方","西北方"];
 var activities = [
-	{name:"", good:"在不买东西银行卡就要满了",bad:"好好待在家吹空调吧"},
+	{name:"断更", good:"你是老大，更不更你说了算",bad:"不怕读者打死你就断吧", weekend: true},
 	{name:"逛街", good:"在不买东西银行卡就要满了",bad:"好好待在家吹空调吧", weekend: true},
-	{name:"锻炼身体", good:"",bad:"能量没消耗多少，吃得却更多", weekend: true},
-	{name:"抽烟", good:"抽烟有利于提神，增加思维敏捷",bad:"除非你活够了，死得早点没关系", weekend: true},
-	{name:"白天上线", good:"今天白天上线是安全的",bad:"可能导致灾难性后果"},
-	{name:"重构", good:"代码质量得到提高",bad:"你很有可能会陷入泥潭"},
-	{name:"使用%t", good:"你看起来更有品位",bad:"别人会觉得你在装逼"},
-	{name:"跳槽", good:"该放手时就放手",bad:"鉴于当前的经济形势，你的下一份工作未必比现在强"},
-	{name:"招人", good:"你面前这位有成为牛人的潜质",bad:"这人会写程序吗？"},
-	{name:"面试", good:"面试官今天心情很好",bad:"面试官不爽，会拿你出气"},
-	{name:"提交辞职申请", good:"公司找到了一个比你更能干更便宜的家伙，巴不得你赶快滚蛋",bad:"鉴于当前的经济形势，你的下一份工作未必比现在强"},
-	{name:"申请加薪", good:"老板今天心情很好",bad:"公司正在考虑裁员"},
-	{name:"晚上加班", good:"晚上是程序员精神最好的时候",bad:"", weekend: true},
-	{name:"在妹子面前吹牛", good:"改善你矮穷挫的形象",bad:"会被识破", weekend: true},
-	{name:"撸管", good:"避免缓冲区溢出",bad:"强撸灰飞烟灭", weekend: true},
-	{name:"浏览成人网站", good:"重拾对生活的信心",bad:"你会心神不宁", weekend: true},
 	{name:"上微博", good:"今天发生的事不能错过",bad:"今天的微博充满负能量", weekend: true},
 	{name:"上AB站", good:"还需要理由吗？",bad:"满屏兄贵亮瞎你的眼", weekend: true},
 	{name:"玩剑三", good:"快去撩道长",bad:"这是一个只有剑侠没情缘的游戏", weekend: true},
-	{name:"开荒", good:"玄晶等着你",bad:"工资全靠你的罚款"},
-	{name:"熬夜", good:"睡你麻痹，起来嗨",bad:"嗨你麻痹，早点睡", weekend: true}
+	{name:"开荒", good:"玄晶等着你",bad:"工资全靠你的罚款", weekend: true},
+	{name:"熬夜", good:"这么年轻又不是熬不起",bad:"一舍二入奔三了，老年团", weekend: true}
 ];
 
 var specials = [
 	{date:20210214, type:'bad', name:'待在男（女）友身边', description:'脱团火葬场，入团保平安。'},
 	{date:20200720, type:'bad', name:'开文', description:'外面的世界多精彩'},
-	{date:20200727, type:'good', name:'开文', description:'榜单的位置留给你了'}
+	{date:20200727, type:'good', name:'开文', description:'榜单的位置留给你了'},
+	{date:20200825, type:'good', name:'???', description:'此时不脱单更待何时'}
 ];
 
 var tools = ["Eclipse写程序", "MSOffice写文档", "记事本写程序", "Windows8", "Linux", "MacOS", "IE", "Android设备", "iOS设备"];
