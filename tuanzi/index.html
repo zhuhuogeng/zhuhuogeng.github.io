@@ -253,23 +253,22 @@ var activities = [
 	{name:"上AB站", good:"还需要理由吗？",bad:"满屏兄贵亮瞎你的眼", weekend: true},
 	{name:"玩剑三", good:"快去撩道长",bad:"这是一个只有剑侠没情缘的游戏", weekend: true},
 	{name:"开荒", good:"玄晶等着你",bad:"工资全靠你的罚款", weekend: true},
-	// {name:"开文", good:"挖坑小能手",bad:"封面换了吗？文案写了吗？", weekend: true},
+	{name:"开文", good:"挖坑小能手",bad:"封面换了吗？文案写了吗？", weekend: true},
 	{name:"码字", good:"帅比团崽日更一万八",bad:"时速500慢慢来，三千就很帅", weekend: true},
 	{name:"看吃播", good:"努力多长一点儿肉，每天都要开开心",bad:"你听说过千斤团吗", weekend: true},
 	{name:"熬夜", good:"这么年轻又不是熬不起",bad:"一舍二入奔三了，老年团", weekend: true}
 ];
 
 var specials = [
-	{date:20200720, type:'bad', name:'开文', description:'外面的世界多精彩'},
 	{date:20200727, type:'good', name:'开文', description:'挖坑小能手，冲！'},
-	{date:20200825, type:'good', name:'???', description:'此时不脱单更待何时'}
+	{date:20200825, type:'good', name:'撩道长', description:'此时不脱单更待何时'}
 ];
 
 var tools = ["Eclipse写程序", "MSOffice写文档", "记事本写程序", "Windows8", "Linux", "MacOS", "IE", "Android设备", "iOS设备"];
 
 var varNames = ["jieguo", "huodong", "pay", "expire", "zhangdan", "every", "free", "i1", "a", "virtual", "ad", "spider", "mima", "pass", "ui"];
 
-var drinks = ["水","茶","红茶","绿茶","咖啡","奶茶","可乐","鲜奶","豆奶","果汁","果味汽水","苏打水","运动饮料","酸奶","酒"];
+var drinks = ["水","茶","红茶","绿茶","咖啡","奶茶","可乐","鲜奶","豆奶","果汁","果味汽水","苏打水","运动饮料","酸奶"];
 
 function is_someday() {
 	return today.getMonth() == 5 && today.getDate() == 4;
@@ -417,7 +416,7 @@ $(function(){
 	$('.date').html(getTodayString());
 	$('.direction_value').html(directions[random(iday, 2) % directions.length]);
 	$('.drink_value').html(pickRandom(drinks,2).join('，'));
-	$('.goddes_value').html(star(random(iday, 6) % 5 + 1));
+	$('.goddes_value').html(star(random(iday, 6) % 2 + 1));
 	pickTodaysLuck();
 });</script>
 	
