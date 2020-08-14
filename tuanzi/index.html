@@ -416,7 +416,7 @@ $(function(){
 	$('.date').html(getTodayString());
 	$('.direction_value').html(directions[random(iday, 2) % directions.length]);
 	$('.drink_value').html(pickRandom(drinks,2).join('，'));
-	$('.goddes_value').html(star(random(iday, 6) % 2 + 1));
+	$('.goddes_value').html(star(random(iday, 6) % 5 + 1));
 	pickTodaysLuck();
 });</script>
 	
